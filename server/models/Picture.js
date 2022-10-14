@@ -25,9 +25,15 @@ const picSchema = new Schema(
       type: String,
       required: true,
     },
-    tag: {
+    public_id: {
       type: String,
+      required: true,
     },
+    tags: [
+      {
+      type: String,
+      },
+    ],    
     createdAt: {
       type: Date,
     },

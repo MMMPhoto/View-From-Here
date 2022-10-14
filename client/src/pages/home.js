@@ -20,7 +20,6 @@ const Home = (props) => {
     const fetchPicData = async () => {
       try {
         const response = await getAllPics();
-        console.log(response);
         const jsonData = await response.json();
         setMarkers(jsonData);
       } catch (error) {

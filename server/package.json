@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeders/photo-seeds.js",
+    "seed": "node ./seeders/database-seed.js",
     "watch": "nodemon server.js --ignore client"
   },
   "repository": {

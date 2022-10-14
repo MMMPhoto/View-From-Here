@@ -12,6 +12,7 @@ const SingleView = () => {
   const [pictureData, setPictureData] = useState([{}]);
   const [savedPicIds, setSavedPicIds] = useState(getSavedPicIds());
   const [picUrl, setPicUrl] = useState("");
+  const [tags, setPicTags] = useState([]);
 
   // Set state for saved photo
   const [isSavedPhoto, setSavedPhoto] = useState(false);
@@ -30,8 +31,9 @@ const SingleView = () => {
         let jsonArray = [];
         jsonArray.push(jsonData);
         setPictureData(jsonArray);
-        let url = jsonData.url;
-        url = url.replace("heic", "jpg");
+        setPicTags(jsonData.tags);
+        // Call API to set photo URL
+        const url = `https://res.cloudinary.com/dwuqez3pg/image/upload/c_scale,w_2000/v1665696442/${jsonData.public_id}.jpg`;
         setPicUrl(url);
       } catch (error) {
         console.log("error", error);
@@ -76,6 +78,11 @@ const SingleView = () => {
           <GrFavorite onClick={() => handleSavePhoto(pictureData[0].id)} />
         </h3>
         {isSavedPhoto ? <p className="ms-3 mb-0">Photo saved!</p> : <></>}
+      </div>
+      <div>
+        <p>Tags: {tags.map((tag, index) => (
+          <span key={index}>{tag} </span>
+        ))}</p>
       </div>
       <img className="single-pic p-4" src={picUrl} />
       <div>

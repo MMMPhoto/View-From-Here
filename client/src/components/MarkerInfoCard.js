@@ -14,10 +14,8 @@ const MarkerInfoCard = ({ marker, navigate }) => {
   // Set state for saved photo
   const [isSavedPhoto, setSavedPhoto] = useState(false);
 
-  // Set url to lower resolution for thumbnail
-  let urlArray = marker.url.split("/");
-  let url = `${urlArray[0]}/${urlArray[1]}/${urlArray[2]}/${urlArray[3]}/${urlArray[4]}/${urlArray[5]}/c_scale,w_150/${urlArray[6]}/${urlArray[7]}`;
-  url = url.replace("heic", "jpg");
+  // Call API for photo URL
+  const url = `https://res.cloudinary.com/dwuqez3pg/image/upload/c_scale,w_150/v1665696442/${marker.public_id}.jpg`;
 
   // Handle save photo
   const handleSavePhoto = () => {

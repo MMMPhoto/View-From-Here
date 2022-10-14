@@ -18,4 +18,4 @@ const getCustomExifData = async (filePath, options) => {
   return thumbnail;
 };
 
-export { getGpsData, getCustomExifData, exifOptions };
+module.exports = { getGpsData, getCustomExifData, exifOptions };
